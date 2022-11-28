@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useState } from "react"
 import { useQuery } from "react-query"
 //Components
@@ -21,6 +21,16 @@ const App = () => {
     "products",
     getProducts
   )
+
+  useEffect(() => {
+    if (cartOpen) {
+      document.documentElement.style.overflowY = "hidden"
+      document.addEventListener("touchstart", function(e) {     document.documentElement.style.overflow = 'hidden'; }, false )
+      document.addEventListener("touchmove", function(e) {     document.documentElement.style.overflow = 'hidden'; }, false  )
+    } else {
+      document.documentElement.removeAttribute("style")
+    }
+  }, [cartOpen])
 
   console.log(data?.map((item) => item.title))
 
