@@ -25,8 +25,9 @@ const App = () => {
   useEffect(() => {
     if (cartOpen) {
       document.documentElement.style.overflowY = "hidden"
-      document.addEventListener("touchstart", function(e) {     document.documentElement.style.overflow = 'hidden'; }, false )
-      document.addEventListener("touchmove", function(e) {     document.documentElement.style.overflow = 'hidden'; }, false  )
+      document.documentElement.addEventListener("touchstart", function(e) {     document.documentElement.style.overflow = 'hidden'; }, false )
+      document.documentElement.addEventListener("touchmove", function(e) {     document.documentElement.style.overflow = 'hidden'; }, false  )
+      document.documentElement.addEventListener("ontouchstart", function(e) {     document.documentElement.style.overflow = 'hidden'; }, false  )
     } else {
       document.documentElement.removeAttribute("style")
     }
