@@ -22,12 +22,19 @@ const App = () => {
     getProducts
   )
 
+  function preventKeyBoardScroll(e:any) {
+    e.preventDefault();
+    e.stopPropagation();
+    document.documentElement.style.overflow = 'hidden';
+    return false;
+}
+
   useEffect(() => {
     if (cartOpen) {
       document.documentElement.style.overflowY = "hidden"
-      document.documentElement.addEventListener("touchstart", function(e) {     document.documentElement.style.overflow = 'hidden'; }, false )
-      document.documentElement.addEventListener("touchmove", function(e) {     document.documentElement.style.overflow = 'hidden'; }, false  )
-      document.documentElement.addEventListener("ontouchstart", function(e) {     document.documentElement.style.overflow = 'hidden'; }, false  )
+      document.addEventListener("touchstart", preventKeyBoardScroll, false )
+      document.addEventListener("touchmove", preventKeyBoardScroll, false  )
+      document.addEventListener("ontouchstart", preventKeyBoardScroll, false  )
     } else {
       document.documentElement.removeAttribute("style")
     }
