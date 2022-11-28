@@ -28,6 +28,11 @@ const App = () => {
     document.documentElement.style.overflow = 'hidden';
     return false;
 }
+  function releaseKeyBoardScroll(e:any) {
+
+    document.documentElement.style.overflow = 'atuo';
+    return false;
+}
 
   useEffect(() => {
     if (cartOpen) {
@@ -35,9 +40,12 @@ const App = () => {
       document.addEventListener("touchstart", preventKeyBoardScroll, false )
       document.addEventListener("touchmove", preventKeyBoardScroll, false  )
       document.addEventListener("ontouchstart", preventKeyBoardScroll, false  )
+      document.addEventListener("scroll", preventKeyBoardScroll, false  )
     } else {
-  
-      document.documentElement.style.overflow = 'auto';
+      document.documentElement.removeAttribute("style")
+       document.documentElement.style.overflow = 'auto';
+       document.addEventListener("touchend", releaseKeyBoardScroll, false )
+       document.addEventListener("touchcancel", releaseKeyBoardScroll, false )
     }
   }, [cartOpen])
 
