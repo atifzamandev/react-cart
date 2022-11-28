@@ -37,13 +37,10 @@ const App = () => {
   useEffect(() => {
     if (cartOpen) {
       document.documentElement.style.overflowY = "hidden"
-      document.addEventListener("touchstart", preventKeyBoardScroll, false )
-      document.addEventListener("touchmove", preventKeyBoardScroll, false  )
-      document.addEventListener("ontouchstart", preventKeyBoardScroll, false  )
-      document.addEventListener("scroll", preventKeyBoardScroll, false  )
+
     } else {
-       document.documentElement.style.overflow = 'auto';
-       document.documentElement.removeAttribute("style")
+      document.documentElement.removeAttribute("style")
+      document.documentElement.style.overflow = 'auto';
     }
   }, [cartOpen])
 
