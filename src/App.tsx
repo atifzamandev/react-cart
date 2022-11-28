@@ -36,7 +36,8 @@ const App = () => {
       document.addEventListener("touchmove", preventKeyBoardScroll, false  )
       document.addEventListener("ontouchstart", preventKeyBoardScroll, false  )
     } else {
-      document.documentElement.removeAttribute("style")
+  
+      document.documentElement.style.overflow = 'auto';
     }
   }, [cartOpen])
 
