@@ -44,8 +44,10 @@ const App = () => {
     } else {
       document.documentElement.removeAttribute("style")
        document.documentElement.style.overflow = 'auto';
-       document.addEventListener("touchend", releaseKeyBoardScroll, false )
-       document.addEventListener("touchcancel", releaseKeyBoardScroll, false )
+       document.removeEventListener("touchstart", releaseKeyBoardScroll, false )
+       document.removeEventListener("touchmove", releaseKeyBoardScroll, false  )
+       document.removeEventListener("ontouchstart", releaseKeyBoardScroll, false  )
+       document.removeEventListener("scroll", releaseKeyBoardScroll, false  )
     }
   }, [cartOpen])
 
