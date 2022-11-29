@@ -54,7 +54,9 @@ const App = () => {
 
 
   
+   
 
+    document.body.removeAttribute("style") 
   
 
   console.log(data?.map((item) => item.title))
