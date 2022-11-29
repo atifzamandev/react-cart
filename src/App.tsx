@@ -51,6 +51,12 @@ const App = () => {
   //   }
   // }, [cartOpen])
 
+
+
+  
+
+  
+
   console.log(data?.map((item) => item.title))
   console.log("posted")
 
@@ -93,7 +99,7 @@ const App = () => {
 
   return (
     <Wrapper>
-      <Drawer style={{height: "200px"}} anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
+      <Drawer style={{height: "200px"}} anchor="right" open={cartOpen} onClose={() => setCartOpen(false)} disableScrollLock={true}>
         <Cart
           cartItems={cartItems}
           addToCart={handleAddToCart}
