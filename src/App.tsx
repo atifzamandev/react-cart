@@ -34,15 +34,7 @@ const App = () => {
     return false;
 }
 
-  useEffect(() => {
-    if (cartOpen) {
-      document.documentElement.style.overflowY = "hidden"
-
-    } else {
-      document.documentElement.removeAttribute("style")
-      document.documentElement.style.overflow = 'auto';
-    }
-  }, [cartOpen])
+  
 
   console.log(data?.map((item) => item.title))
 
