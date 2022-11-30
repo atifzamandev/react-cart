@@ -5,6 +5,4 @@ font-family: Arial, Helvetica, sans-serif;
 width: 200px;
 padding: 20px;
 max-height: 300px;
- 
-
 `;

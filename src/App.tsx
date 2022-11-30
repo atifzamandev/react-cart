@@ -23,40 +23,38 @@ const App = () => {
   )
 
   function preventKeyBoardScroll(e:any) {
-    e.preventDefault();
-    e.stopPropagation();
+    // e.preventDefault();
+    // e.stopPropagation();
     document.documentElement.style.overflow = 'hidden';
     return false;
 }
   function releaseKeyBoardScroll(e:any) {
-
-    document.documentElement.style.overflow = 'atuo';
+    document.documentElement.removeAttribute("style")
+    // document.documentElement.style.overflow = 'atuo';
     return false;
 }
 
-  // useEffect(() => {
-  //   if (cartOpen) {
-  //     document.documentElement.style.overflowY = "hidden"
-  //     document.addEventListener("touchstart", preventKeyBoardScroll, false )
-  //     document.addEventListener("touchmove", preventKeyBoardScroll, false  )
-  //     document.addEventListener("ontouchstart", preventKeyBoardScroll, false  )
-  //     document.addEventListener("scroll", preventKeyBoardScroll, false  )
-  //   } else {
-  //      document.documentElement.style.overflow = 'auto';
-  //      document.removeEventListener("touchstart", releaseKeyBoardScroll, false )
-  //      document.removeEventListener("touchmove", releaseKeyBoardScroll, false  )
-  //      document.removeEventListener("ontouchstart", releaseKeyBoardScroll, false  )
-  //      document.removeEventListener("scroll", releaseKeyBoardScroll, false  )
-  //      document.documentElement.removeAttribute("style")
-  //   }
-  // }, [cartOpen])
+  useEffect(() => {
+    if (cartOpen) {
+      document.documentElement.style.overflowY = "hidden"
+      document.addEventListener("touchstart", preventKeyBoardScroll, false )
+      document.addEventListener("touchmove", preventKeyBoardScroll, false  )
+      // document.addEventListener("ontouchstart", preventKeyBoardScroll, false  )
+    //  document.addEventListener("scroll", preventKeyBoardScroll, false  )
+    } else {
+      document.documentElement.removeAttribute("style")
+      //  document.documentElement.style.overflow = 'auto';
+        document.addEventListener("touchstart", releaseKeyBoardScroll, false )
+         document.addEventListener("touchmove", releaseKeyBoardScroll, false  )
+        //  document.addEventListener("ontouchstart", releaseKeyBoardScroll, false  )
+      //  document.removeEventListener("scroll", releaseKeyBoardScroll, false  )
+    }
+  }, [cartOpen])
 
 
 
   
-   
 
-    document.body.removeAttribute("style") 
   
 
   console.log(data?.map((item) => item.title))
