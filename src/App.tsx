@@ -22,30 +22,33 @@ const App = () => {
     getProducts
   )
 
-  function preventKeyBoardScroll(e:any) {
-    // e.preventDefault();
-    // e.stopPropagation();
-    document.documentElement.style.overflow = 'hidden';
-    return false;
-}
-  function releaseKeyBoardScroll(e:any) {
-    document.documentElement.removeAttribute("style")
-    // document.documentElement.style.overflow = 'atuo';
-    return false;
-}
+//   function preventKeyBoardScroll(e:any) {
+//     e.preventDefault();
+//     e.stopPropagation();
+//     document.documentElement.style.overflow = 'hidden';
+//     document.body.style.paddingBottom = 'env(safe-area-inset-bottom)'
+//     return false;
+// }
+//   function releaseKeyBoardScroll(e:any) {
+//     document.documentElement.removeAttribute("style")
+//     document.documentElement.style.overflow = 'atuo';
+//     return false;
+// }
 
   useEffect(() => {
     if (cartOpen) {
-      document.documentElement.style.overflowY = "hidden"
-      document.addEventListener("touchstart", preventKeyBoardScroll, false )
-      document.addEventListener("touchmove", preventKeyBoardScroll, false  )
+      document.documentElement.style.cssText = 'overflow: hidden; height: 100vh'
+      document.body.style.position = "fixed"
+      // document.addEventListener("touchstart", preventKeyBoardScroll, false )
+      // document.addEventListener("touchmove", preventKeyBoardScroll, false  )
       // document.addEventListener("ontouchstart", preventKeyBoardScroll, false  )
     //  document.addEventListener("scroll", preventKeyBoardScroll, false  )
     } else {
       document.documentElement.removeAttribute("style")
+      document.body.removeAttribute("style")
       //  document.documentElement.style.overflow = 'auto';
-        document.addEventListener("touchstart", releaseKeyBoardScroll, false )
-         document.addEventListener("touchmove", releaseKeyBoardScroll, false  )
+        // document.addEventListener("touchstart", releaseKeyBoardScroll, false )
+        //  document.addEventListener("touchmove", releaseKeyBoardScroll, false  )
         //  document.addEventListener("ontouchstart", releaseKeyBoardScroll, false  )
       //  document.removeEventListener("scroll", releaseKeyBoardScroll, false  )
     }
