@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useLayoutEffect, useRef } from "react"
 import { useState } from "react"
 import { useQuery } from "react-query"
 //Components
@@ -35,24 +35,54 @@ const App = () => {
 //     return false;
 // }
 
-  useEffect(() => {
-    if (cartOpen) {
-      document.documentElement.style.cssText = 'overflow: hidden; height: 100vh'
-      document.body.style.position = "fixed"
-      // document.addEventListener("touchstart", preventKeyBoardScroll, false )
-      // document.addEventListener("touchmove", preventKeyBoardScroll, false  )
-      // document.addEventListener("ontouchstart", preventKeyBoardScroll, false  )
-    //  document.addEventListener("scroll", preventKeyBoardScroll, false  )
-    } else {
-      document.documentElement.removeAttribute("style")
-      document.body.removeAttribute("style")
-      //  document.documentElement.style.overflow = 'auto';
-        // document.addEventListener("touchstart", releaseKeyBoardScroll, false )
-        //  document.addEventListener("touchmove", releaseKeyBoardScroll, false  )
-        //  document.addEventListener("ontouchstart", releaseKeyBoardScroll, false  )
-      //  document.removeEventListener("scroll", releaseKeyBoardScroll, false  )
+const scrollX = window.scrollX;
+const scrollY = window.scrollY;
+
+
+const [scrollPosition, setPosition] = useState(0);
+const scrollPos = useRef(0);
+
+      
+
+  useLayoutEffect(() => {
+    function updatePosition() {
+      setPosition(window.pageYOffset);
     }
-  }, [cartOpen])
+    window.addEventListener('scroll', updatePosition);
+    updatePosition();
+    return () => window.removeEventListener('scroll', updatePosition);
+  }, [cartOpen]);
+
+  
+  console.log (scrollPosition);
+  scrollPos.current = scrollPosition
+useEffect(() => {
+  if (cartOpen) { 
+    
+    console.log(scrollPos.current)
+    document.documentElement.style.cssText = 'overflow: hidden; min-height: 100vh'
+    document.body.style.cssText = "position:fixed"
+    document.body.style.cssText = "overflow-anchor: none;"
+    
+
+    // document.addEventListener("touchmove", preventKeyBoardScroll, false  )
+    // document.addEventListener("ontouchstart", preventKeyBoardScroll, false  )
+    //  document.addEventListener("scroll", preventKeyBoardScroll, false  )
+  } else {
+    document.documentElement.removeAttribute("style")
+    document.body.removeAttribute("style")
+    //window.scrollTo(0, scrollPos.current)
+    //  document.documentElement.style.overflow = 'auto';
+    // document.addEventListener("touchstart", releaseKeyBoardScroll, false )
+    //  document.addEventListener("touchmove", releaseKeyBoardScroll, false  )
+    //  document.addEventListener("ontouchstart", releaseKeyBoardScroll, false  )
+    //  document.removeEventListener("scroll", releaseKeyBoardScroll, false  )
+  }
+}, [cartOpen])
+
+
+
+
 
 
 
