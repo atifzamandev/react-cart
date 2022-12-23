@@ -64,7 +64,6 @@ useEffect(() => {
     document.body.style.cssText = "position:fixed"
     document.body.style.cssText = "overflow-anchor: none;"
     
-
     // document.addEventListener("touchmove", preventKeyBoardScroll, false  )
     // document.addEventListener("ontouchstart", preventKeyBoardScroll, false  )
     //  document.addEventListener("scroll", preventKeyBoardScroll, false  )
