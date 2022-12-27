@@ -62,7 +62,9 @@ useEffect(() => {
     console.log(scrollPos.current)
     document.documentElement.style.cssText = 'overflow: hidden; min-height: 100vh'
     document.body.style.cssText = "position:fixed"
-    document.body.style.cssText = "overflow-anchor: none;"
+    if (window.innerWidth < 600) {
+      document.body.style.cssText = "overflow-anchor: none;"
+    }
     
     // document.addEventListener("touchmove", preventKeyBoardScroll, false  )
     // document.addEventListener("ontouchstart", preventKeyBoardScroll, false  )
